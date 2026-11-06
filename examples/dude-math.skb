@@ -1,0 +1,8 @@
+# dude-math.skb — import math, call sqrt(81), emit the result
+# output:
+#   [Dude] math joined
+#   [Dude] math.sqrt -> 9
+#   <TAB>
+the dude who no one invited: math ;
+dude call math.sqrt 81 ;
+rizz

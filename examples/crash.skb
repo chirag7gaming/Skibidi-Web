@@ -1,0 +1,6 @@
+# crash.skb — diddy+gooner while spoiled halts the program
+# state.haltReason will be:
+#   "CRASH (diddy+gooner while spoiled/undefined)"
+mango
+diddy gooner
+patrick 1

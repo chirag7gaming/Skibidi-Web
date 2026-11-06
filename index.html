@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skibidi Playground — Fish Gang Co.</title>
+<link rel="stylesheet" href="css/theme.css">
+<style>
+  html, body { height: 100%; overflow: hidden; }
+  body { display: flex; flex-direction: column; }
+  #app { flex: 1; display: flex; min-height: 0; background: var(--deep); }
+  .sk-sidebar { width: 240px; background: var(--surface); border-right: 1px solid var(--border); overflow-y: auto; flex-shrink: 0; padding: var(--sp-3); }
+  .sk-sidebar h4 { font-family: var(--font-display); font-size: 0.75rem; text-transform: uppercase; color: var(--text-dim); margin: var(--sp-3) 0 var(--sp-2); }
+  .sk-sidebar h4:first-child { margin-top: 0; }
+  .sk-chip-grid { display: flex; flex-wrap: wrap; gap: 6px; }
+  .sk-chip { font-family: var(--font-display); font-size: 0.72rem; padding: 4px 9px; border-radius: 999px; border: 1px solid var(--border); background: var(--surface-2); color: var(--text-dim); cursor: pointer; }
+  .sk-chip:hover { border-color: var(--accent); color: var(--accent); }
+  .sk-main { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+  .sk-toolbar { display: flex; gap: var(--sp-2); align-items: center; padding: var(--sp-2) var(--sp-3); background: var(--surface); border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+  .sk-toolbar button { font-family: var(--font-display); font-size: 0.82rem; padding: 6px 12px; border-radius: var(--radius); border: 1px solid var(--border); background: var(--surface-2); color: var(--text); cursor: pointer; }
+  .sk-toolbar button:hover { border-color: var(--accent); color: var(--accent); }
+  .sk-toolbar button.primary { background: var(--accent); color: var(--deep); border-color: var(--accent); font-weight: 600; }
+  .sk-editor-wrap { flex: 1; display: flex; min-height: 0; }
+  textarea#skCode { flex: 1; background: var(--deep); color: var(--text); border: none; border-right: 1px solid var(--border); padding: var(--sp-3); font-family: var(--font-display); font-size: 13px; line-height: 1.6; resize: none; outline: none; }
+  .sk-terminal { width: 42%; min-width: 260px; background: #050b0e; color: #9fe; font-family: var(--font-display); font-size: 12.5px; padding: var(--sp-3); overflow-y: auto; white-space: pre-wrap; }
+  .sk-terminal .err { color: var(--danger); }
+  .sk-state-bar { display: flex; gap: var(--sp-3); padding: var(--sp-2) var(--sp-3); background: var(--surface); border-top: 1px solid var(--border); font-family: var(--font-display); font-size: 0.76rem; color: var(--text-dim); flex-wrap: wrap; }
+  .sk-state-bar b { color: var(--accent); }
+  @media (max-width: 760px) {
+    .sk-sidebar { display: none; }
+    .sk-editor-wrap { flex-direction: column; }
+    .sk-terminal { width: 100%; height: 35vh; border-top: 1px solid var(--border); }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav-bar">
+    <a href="https://fish-gang.netlify.app/Company" class="brand" target="_blank" rel="noopener noreferrer"><span class="dot">●</span> Fish Gang Co.</a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Playground</a></li>
+      <li><a href="README.md">Docs</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">☰</button>
+  </nav>
+  <div class="nav-drawer" id="navDrawer">
+    <a href="index.html">Playground</a>
+    <a href="README.md">Docs</a>
+  </div>
+</header>
+
+<div id="app">
+  <aside class="sk-sidebar">
+    <h4>Core ops</h4>
+    <div class="sk-chip-grid">
+      <span class="sk-chip" data-op="dop">dop</span>
+      <span class="sk-chip" data-op="bop">bop</span>
+      <span class="sk-chip" data-op="skibidi">skibidi</span>
+      <span class="sk-chip" data-op="grimace">grimace</span>
+      <span class="sk-chip" data-op="toilet">toilet</span>
+      <span class="sk-chip" data-op="rizz">rizz</span>
+      <span class="sk-chip" data-op="ohio 3">ohio 3</span>
+      <span class="sk-chip" data-op="67">67</span>
+      <span class="sk-chip" data-op="mango">mango</span>
+      <span class="sk-chip" data-op="gyatt">gyatt</span>
+      <span class="sk-chip" data-op="okay?">okay?</span>
+    </div>
+
+    <h4>The dude</h4>
+    <div class="sk-chip-grid">
+      <span class="sk-chip" data-op="the dude who no one invited: math ;">import math</span>
+      <span class="sk-chip" data-op="dude call math.sqrt 16 ;">sqrt(16)</span>
+    </div>
+    <p class="text-dim mt-4" style="font-size: 0.72rem;">Real execution, sandboxed to math / random / string / time / array helpers only.</p>
+
+    <h4>STL transforms</h4>
+    <div class="sk-chip-grid">
+      <button class="sk-chip" data-transform="mirror">mirror</button>
+      <button class="sk-chip" data-transform="thicc">thicc</button>
+      <button class="sk-chip" data-transform="skinny">skinny</button>
+      <button class="sk-chip" data-transform="flip">flip</button>
+      <button class="sk-chip" data-transform="chaos">chaos</button>
+      <button class="sk-chip" data-transform="mutate">mutate</button>
+      <button class="sk-chip" data-transform="upsideDown">upside-down</button>
+      <button class="sk-chip" data-transform="insideOut">inside-out</button>
+    </div>
+
+    <h4>Examples</h4>
+    <div class="flex flex-col gap-2">
+      <button class="btn" data-example="hello" style="font-size: 0.78rem;">Print "A"</button>
+      <button class="btn" data-example="dude" style="font-size: 0.78rem;">Use the dude</button>
+      <button class="btn" data-example="loop" style="font-size: 0.78rem;">Ohio loop</button>
+    </div>
+  </aside>
+
+  <div class="sk-main">
+    <div class="sk-toolbar">
+      <button class="primary" id="runBtn">▶ Run</button>
+      <button id="clearBtn">Clear output</button>
+      <button id="resetBtn">Reset state</button>
+      <span class="spacer" style="flex: 1;"></span>
+      <a href="README.md" class="text-dim" style="font-size: 0.78rem;">Docs →</a>
+    </div>
+    <div class="sk-editor-wrap">
+      <textarea id="skCode" spellcheck="false">dop dop dop rizz</textarea>
+      <div class="sk-terminal" id="skTerminal">Skibidi Playground — type ops separated by spaces, then Run.</div>
+    </div>
+    <div class="sk-state-bar">
+      <span>pointer: <b id="stPointer">0</b></span>
+      <span>spoiled: <b id="stSpoiled">false</b></span>
+      <span>swapped: <b id="stSwapped">false</b></span>
+      <span>steps: <b id="stSteps">0</b></span>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  Built by <a href="https://fish-gang.netlify.app/Company" target="_blank" rel="noopener noreferrer">Fish Gang Co.</a> · MIT licensed
+</footer>
+
+<script src="js/perf-tier.js"></script>
+<script src="js/theme-toggle.js"></script>
+<script src="lib/skibidi.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  var navToggle = document.getElementById('navToggle');
+  var navDrawer = document.getElementById('navDrawer');
+  navToggle.addEventListener('click', function () {
+    var open = navDrawer.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+
+  var codeArea = document.getElementById('skCode');
+  var terminal = document.getElementById('skTerminal');
+  var state = new SkibidiEngine.SkibidiState();
+
+  function log(text, isErr) {
+    var span = document.createElement('span');
+    if (isErr) span.className = 'err';
+    span.textContent = text + '\n';
+    terminal.appendChild(span);
+    terminal.scrollTop = terminal.scrollHeight;
+  }
+
+  function updateStateBar() {
+    document.getElementById('stPointer').textContent = state.pointer;
+    document.getElementById('stSpoiled').textContent = state.spoiled;
+    document.getElementById('stSwapped').textContent = state.swapped;
+    document.getElementById('stSteps').textContent = state.ip;
+  }
+
+  document.getElementById('runBtn').addEventListener('click', function () {
+    state.program = SkibidiEngine.tokenize(codeArea.value);
+    state.ip = 0;
+    state.output = '';
+    state.haltReason = null;
+    try {
+      SkibidiEngine.step(state, 5000, function (msg) { log(msg); });
+      if (state.output) log(state.output.replace(/\n$/, ''));
+      if (state.haltReason) log(state.haltReason, true);
+      log('— done (' + state.ip + ' steps) —');
+    } catch (e) {
+      log('Error: ' + e.message, true);
+    }
+    updateStateBar();
+  });
+
+  document.getElementById('clearBtn').addEventListener('click', function () {
+    terminal.textContent = '';
+  });
+
+  document.getElementById('resetBtn').addEventListener('click', function () {
+    state = new SkibidiEngine.SkibidiState();
+    updateStateBar();
+    log('— state reset —');
+  });
+
+  document.querySelectorAll('[data-op]').forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      codeArea.value += (codeArea.value && !codeArea.value.endsWith(' ') ? ' ' : '') + chip.dataset.op;
+      codeArea.focus();
+    });
+  });
+
+  document.querySelectorAll('[data-transform]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var tokens = SkibidiEngine.tokenize(codeArea.value);
+      var fn = SkibidiEngine.Transforms[btn.dataset.transform];
+      if (!fn) return;
+      codeArea.value = fn(tokens).join(' ');
+      log('Applied transform: ' + btn.dataset.transform);
+    });
+  });
+
+  var EXAMPLES = {
+    hello: 'dop '.repeat(65) + 'rizz',
+    dude: 'the dude who no one invited: math ; dude call math.sqrt 81 ; rizz',
+    loop: 'dop dop dop dop dop toilet ohio 3'
+  };
+
+  document.querySelectorAll('[data-example]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      codeArea.value = EXAMPLES[btn.dataset.example];
+    });
+  });
+
+  updateStateBar();
+})();
+</script>
+</body>
+</html>

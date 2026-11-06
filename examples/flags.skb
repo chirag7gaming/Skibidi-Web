@@ -1,0 +1,10 @@
+# flags.skb — toggle the two state flags and observe their effects
+# after this program:
+#   spoiled = true   → dop decrements
+#   swapped = true   → grimace moves left
+#   mem[0].re = -1, pointer = 255
+mango
+dop
+67
+grimace
+patrick 1

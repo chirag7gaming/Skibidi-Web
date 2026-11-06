@@ -1,0 +1,6 @@
+# dot.skb — vector dot product
+# 8 dops → mem[0].re = 8. dot 0 0 0 → mem[0].re = 8² = 64.
+# rizz emits fromCharCode(64) = '@'
+dop dop dop dop dop dop dop dop
+dot 0 0 0
+rizz

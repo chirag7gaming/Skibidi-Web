@@ -1,0 +1,3 @@
+# patrick.skb — numeric-arity text op
+# output: "Patrick Patrick Patrick Patrick Patrick\n"
+patrick 5

@@ -1,0 +1,28 @@
+{
+  "name": "skibidi-web",
+  "version": "8.0.0",
+  "description": "SCL/STL toy-language interpreter — sandboxed, deterministic, no external APIs.",
+  "license": "MIT",
+  "author": "Fish Gang Co. (https://fish-gang.netlify.app/Company)",
+  "type": "commonjs",
+  "main": "lib/skibidi.js",
+  "files": [
+    "lib",
+    "css",
+    "js",
+    "tests",
+    "examples",
+    "docs",
+    "index.html",
+    "server.js",
+    "demo.js",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "start": "node server.js",
+    "demo": "node demo.js",
+    "test": "node --test tests/"
+  },
+  "homepage": "https://fish-gang.netlify.app/Company"
+}
